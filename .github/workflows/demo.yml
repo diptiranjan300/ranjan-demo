@@ -1,3 +1,6 @@
 name: Shell command
 
-on: 
+on: [push]
+
+jobs:
+ 
