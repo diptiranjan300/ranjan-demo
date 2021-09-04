@@ -12,7 +12,7 @@ jobs:
       - name: List files
         run: | 
          pwd
-         ls -a
+         ls -al
 
       - name: Simple JS actions
         id: greet
