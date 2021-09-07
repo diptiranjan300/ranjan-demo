@@ -5,7 +5,7 @@ env:
 
 jobs:
   decrypt:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         name: Decrypt file
@@ -42,7 +42,7 @@ jobs:
             "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
             }'
   log-env:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       JOB_ENV: Available to all steps in log-env job
     steps:
@@ -59,7 +59,7 @@ jobs:
           echo "JOB_ENV: ${JOB_ENV}"
           echo "STEP_ENV: ${STEP_ENV}"
   log-default-env:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Default ENV Variables
         run: |
