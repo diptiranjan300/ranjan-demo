@@ -5,13 +5,13 @@ env:
 
 jobs:
   decrypt:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
           name: Decrypt file
 
   create-issue:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Push a random file
         run: |
