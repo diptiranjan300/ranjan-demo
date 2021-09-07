@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: checkout
+        name: checkout
 
   create-issue:
     runs-on: ubuntu-latest
