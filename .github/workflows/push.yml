@@ -1,17 +1,21 @@
 name: ENV Variables
-on: push
+on: pull_request
 env:
   WF_ENV: Available to all jobs
 
 jobs:
   decrypt:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        name: checkout
-
+      - uses: actions/checkout@v1
+      - name: Decrypt file
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json secret.json.gpg
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      - name: Print our file contect
+        run: cat $HOME/secret.json
   create-issue:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Push a random file
         run: |
@@ -42,7 +46,7 @@ jobs:
             "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
             }'
   log-env:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       JOB_ENV: Available to all steps in log-env job
     steps:
